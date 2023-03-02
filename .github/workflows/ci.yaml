@@ -25,7 +25,7 @@ jobs:
         run: deno lint
 
       - name: Cache dependencies
-        run: deno cache main.ts
+        run: deno cache main.ts main_test.ts
 
       - name: Run tests
         run: deno test --allow-read
