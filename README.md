@@ -5,12 +5,19 @@
   quaff
 </h1>
 
-A port of my [`quaff` Node.js library](https://github.com/rdmurphy/quaff) to Deno. Mostly done as an experiment to see how easy it would be, but it's also fully tested! (And adds support for [TOML](https://toml.io/en/)!)
+A port of my [`quaff` Node.js library](https://github.com/rdmurphy/quaff) to
+Deno. Mostly done as an experiment to see how easy it would be, but it's also
+fully tested! (And adds support for [TOML](https://toml.io/en/)!)
 
 ## Key features
 
-- 🚚 A **data pipeline helper** that works similar to [Middleman](https://middlemanapp.com/)'s [Data Files](https://middlemanapp.com/advanced/data_files/) collector
-- 📦 Point the library at a folder filled with JS, AML ([ArchieML](http://archieml.org)), JSON, YAML, CSV, TSV and/or TOML files and **get a JavaScript object back that reflects the folder's structure and content/exports**
+- 🚚 A **data pipeline helper** that works similar to
+  [Middleman](https://middlemanapp.com/)'s
+  [Data Files](https://middlemanapp.com/advanced/data_files/) collector
+- 📦 Point the library at a folder filled with JS, AML
+  ([ArchieML](http://archieml.org)), JSON, YAML, CSV, TSV and/or TOML files and
+  **get a JavaScript object back that reflects the folder's structure and
+  content/exports**
 
 ## Usage
 
@@ -70,7 +77,8 @@ And the results...
 }
 ```
 
-It's also possible to load a single file at a time, allowing more custom approaches in case `load` doesn't work exactly the way you'd like.
+It's also possible to load a single file at a time, allowing more custom
+approaches in case `load` doesn't work exactly the way you'd like.
 
 ```js
 import { loadFile } from "quaff";
@@ -96,9 +104,12 @@ And the results...
 
 ## Advanced Usage with JavaScript files
 
-`quaff` has the ability to load JavaScript files. But how exactly does that work?
+`quaff` has the ability to load JavaScript files. But how exactly does that
+work?
 
-JavaScript files that are consumed by `quaff` have to follow one simple rule - they must `export default` a function, an async function or value. All three of these are valid and return the same value:
+JavaScript files that are consumed by `quaff` have to follow one simple rule -
+they must `export default` a function, an async function or value. All three of
+these are valid and return the same value:
 
 ```js
 export default [
@@ -127,7 +138,9 @@ export default async () => [
 ];
 ```
 
-The final example above is the most interesting one - `async` functions also work! This means you can write code to hit API endpoints, or do other asynchronous work, and `quaff` will wait for those to resolve.
+The final example above is the most interesting one - `async` functions also
+work! This means you can write code to hit API endpoints, or do other
+asynchronous work, and `quaff` will wait for those to resolve.
 
 ```js
 export default async () => {
@@ -139,7 +152,8 @@ export default async () => {
 };
 ```
 
-Don't have a `Promise` to do async work with? Working with a callback interface? Just wrap it in one!
+Don't have a `Promise` to do async work with? Working with a callback interface?
+Just wrap it in one!
 
 ```js
 import { apiHelper } from "npm:my-callback-api";

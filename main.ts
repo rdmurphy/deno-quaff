@@ -55,7 +55,7 @@ export async function loadFile(filePath: string): Promise<unknown> {
         break;
       default:
         throw new Error(
-          `Unable to parse ${filePath} - no valid processor found for ${ext} extension`
+          `Unable to parse ${filePath} - no valid processor found for ${ext} extension`,
         );
     }
   }
@@ -77,10 +77,12 @@ export async function load(dirPath: string): Promise<LoadReturnValue> {
   // a set to watch out for duplicate keys
   const existing = new Set();
 
-  for await (const { path } of walk(cwd, {
-    includeDirs: false,
-    exts,
-  })) {
+  for await (
+    const { path } of walk(cwd, {
+      includeDirs: false,
+      exts,
+    })
+  ) {
     // get the pieces of the path
     const { dir, name } = parse(relative(cwd, path));
 
@@ -96,7 +98,7 @@ export async function load(dirPath: string): Promise<LoadReturnValue> {
     // if this key isn't unique, throw an error
     if (existing.has(key)) {
       throw new Error(
-        `More than one file attempted to use "${key}" as its path. This error is caused by having multiple files in a directory with the same name but different extensions.`
+        `More than one file attempted to use "${key}" as its path. This error is caused by having multiple files in a directory with the same name but different extensions.`,
       );
     }
 

@@ -32,7 +32,7 @@ Deno.test("should return object generated from json", async () => {
 
 Deno.test("should return object generated from yaml", async () => {
   const expected = parseYaml(
-    await Deno.readTextFile("./test_files/basic.yaml")
+    await Deno.readTextFile("./test_files/basic.yaml"),
   );
   const actual = await loadFile("./test_files/basic.yaml");
 
@@ -64,7 +64,7 @@ Deno.test("should return object generated from tsv", async () => {
 
 Deno.test("should return object generated from toml", async () => {
   const expected = parseToml(
-    await Deno.readTextFile("./test_files/basic.toml")
+    await Deno.readTextFile("./test_files/basic.toml"),
   );
   const actual = await loadFile("./test_files/basic.toml");
 
@@ -74,12 +74,12 @@ Deno.test("should return object generated from toml", async () => {
 Deno.test("should return object generated from aml", async () => {
   assertEquals(
     await readArchieML("./test_files/basic.aml"),
-    await loadFile("./test_files/basic.aml")
+    await loadFile("./test_files/basic.aml"),
   );
 
   assertEquals(
     await readArchieML("./test_files/advanced.aml"),
-    await loadFile("./test_files/advanced.aml")
+    await loadFile("./test_files/advanced.aml"),
   );
 });
 
@@ -88,14 +88,14 @@ Deno.test(
   async () => {
     assertEquals(
       (await import("./test_files/basic.js")).default,
-      await loadFile("./test_files/basic.js")
+      await loadFile("./test_files/basic.js"),
     );
 
     assertEquals(
       (await import("./test_files/basic.mjs")).default,
-      await loadFile("./test_files/basic.mjs")
+      await loadFile("./test_files/basic.mjs"),
     );
-  }
+  },
 );
 
 Deno.test(
@@ -103,14 +103,14 @@ Deno.test(
   async () => {
     assertEquals(
       (await import("./test_files/basic_sync.js")).default(),
-      await loadFile("./test_files/basic_sync.js")
+      await loadFile("./test_files/basic_sync.js"),
     );
 
     assertEquals(
       (await import("./test_files/basic_sync.mjs")).default(),
-      await loadFile("./test_files/basic_sync.mjs")
+      await loadFile("./test_files/basic_sync.mjs"),
     );
-  }
+  },
 );
 
 Deno.test(
@@ -118,14 +118,14 @@ Deno.test(
   async () => {
     assertEquals(
       await (await import("./test_files/basic_async.js")).default(),
-      await loadFile("./test_files/basic_async.js")
+      await loadFile("./test_files/basic_async.js"),
     );
 
     assertEquals(
       await (await import("./test_files/basic_async.mjs")).default(),
-      await loadFile("./test_files/basic_async.mjs")
+      await loadFile("./test_files/basic_async.mjs"),
     );
-  }
+  },
 );
 
 // Directory tests
@@ -138,7 +138,7 @@ Deno.test(
     const actual = await load("./test_files/single_depth");
 
     assertEquals(actual, expected);
-  }
+  },
 );
 
 Deno.test(
@@ -148,14 +148,14 @@ Deno.test(
       corgis: await readJson("./test_files/double_depth/corgis.json"),
       second: {
         malamutes: await readJson(
-          "./test_files/double_depth/second/malamutes.json"
+          "./test_files/double_depth/second/malamutes.json",
         ),
       },
     };
     const actual = await load("./test_files/double_depth");
 
     assertEquals(actual, expected);
-  }
+  },
 );
 
 Deno.test(
@@ -165,11 +165,11 @@ Deno.test(
       corgis: await readJson("./test_files/triple_depth/corgis.json"),
       second: {
         malamutes: await readJson(
-          "./test_files/triple_depth/second/malamutes.json"
+          "./test_files/triple_depth/second/malamutes.json",
         ),
         third: {
           cats: await readCsv(
-            "./test_files/triple_depth/second/third/cats.csv"
+            "./test_files/triple_depth/second/third/cats.csv",
           ),
         },
       },
@@ -177,7 +177,7 @@ Deno.test(
     const actual = await load("./test_files/triple_depth");
 
     assertEquals(actual, expected);
-  }
+  },
 );
 
 // errors
@@ -187,9 +187,9 @@ Deno.test(
     await assertRejects(
       () => loadFile("./test_files/empty.json"),
       parseJson.JSONParseError,
-      "Unexpected end of JSON input"
+      "Unexpected end of JSON input",
     );
-  }
+  },
 );
 
 Deno.test(
@@ -197,15 +197,15 @@ Deno.test(
   async () => {
     await assertRejects(
       () => loadFile("./test_files/bad.json"),
-      parseJson.JSONParseError
+      parseJson.JSONParseError,
     );
-  }
+  },
 );
 
 Deno.test("should throw an error if a file key is reused", async () => {
   await assertRejects(
     () => load("./test_files/duplicate_keys"),
     Error,
-    "More than one file attempted"
+    "More than one file attempted",
   );
 });
