@@ -5,9 +5,9 @@
   quaff
 </h1>
 
-A port of my [`quaff` Node.js library](https://github.com/rdmurphy/quaff) to
+A port of the [`quaff` Node.js library](https://github.com/rdmurphy/quaff) to
 Deno. Mostly done as an experiment to see how easy it would be, but it's also
-fully tested! (And adds support for [TOML](https://toml.io/en/)!)
+fully tested and adds support for [TOML](https://toml.io/en/)! 🎉
 
 ## Key features
 
@@ -36,8 +36,8 @@ data/
 
 After `import`'ing `quaff`:
 
-```js
-import { load } from "TKTK/main.ts";
+```ts
+import { load } from "https://deno.land/x/quaff/main.ts";
 
 const data = await load("./data/");
 console.log(data);
@@ -80,8 +80,8 @@ And the results...
 It's also possible to load a single file at a time, allowing more custom
 approaches in case `load` doesn't work exactly the way you'd like.
 
-```js
-import { loadFile } from "quaff";
+```ts
+import { loadFile } from "https://deno.land/x/quaff/main.ts";
 
 const data = await loadFile("./data/mammals/bears.csv");
 console.log(data);

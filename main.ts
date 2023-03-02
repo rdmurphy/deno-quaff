@@ -11,18 +11,18 @@
  *
  * ```txt
  * data/
- * mammals/
- * cats.json
- * dogs.json
- * bears.csv
- * birds/
- * parrots.yml
- * story.aml
+ *   mammals/
+ *     cats.json
+ *     dogs.json
+ *     bears.csv
+ *   birds/
+ *     parrots.yml
+ *     story.aml
  * ```
  *
  * After importing `quaff`:
  *
- * ```js
+ * ```ts
  * import { load } from "https://deno.land/x/quaff/main.ts";
  *
  * const data = await load("./data/");
