@@ -2,7 +2,7 @@ import {
   assertEquals,
   assertRejects,
 } from "https://deno.land/std@0.178.0/testing/asserts.ts";
-import { load, loadFile } from "./main.ts";
+import { load, loadFile } from "./mod.ts";
 import {
   parseArchieML,
   parseCsv,

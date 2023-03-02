@@ -37,7 +37,7 @@ data/
 After `import`'ing `quaff`:
 
 ```ts
-import { load } from "https://deno.land/x/quaff/main.ts";
+import { load } from "https://deno.land/x/quaff/mod.ts";
 
 const data = await load("./data/");
 console.log(data);
@@ -81,7 +81,7 @@ It's also possible to load a single file at a time, allowing more custom
 approaches in case `load` doesn't work exactly the way you'd like.
 
 ```ts
-import { loadFile } from "https://deno.land/x/quaff/main.ts";
+import { loadFile } from "https://deno.land/x/quaff/mod.ts";
 
 const data = await loadFile("./data/mammals/bears.csv");
 console.log(data);

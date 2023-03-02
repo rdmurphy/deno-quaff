@@ -23,7 +23,7 @@
  * After importing `quaff`:
  *
  * ```ts
- * import { load } from "https://deno.land/x/quaff/main.ts";
+ * import { load } from "https://deno.land/x/quaff/mod.ts";
  *
  * const data = await load("./data/");
  * console.log(data);
@@ -67,7 +67,7 @@
  * approaches in case `load` doesn't work exactly the way you'd like.
  *
  * ```ts
- * import { loadFile } from "https://deno.land/x/quaff/main.ts";
+ * import { loadFile } from "https://deno.land/x/quaff/mod.ts";
  *
  * const data = await loadFile("./data/mammals/bears.csv");
  * console.log(data);
